@@ -50,6 +50,7 @@ class AdminController extends Controller
                 'password' => bcrypt($request->password),
             ]);
 
+
             if ($res > 0)
                 return back()->with('success', " گذرواژه با موفقیت تغییر یافت ");
             else
