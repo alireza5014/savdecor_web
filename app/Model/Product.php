@@ -37,11 +37,11 @@ class Product extends Model
         return convert_to_digit($value);
     }
 
-    public function getPriceAttribute($value)
-    {
-
-        return convert_to_digit(number_format($value));
-    }
+//    public function getPriceAttribute($value)
+//    {
+//
+//        return convert_to_digit(number_format($value));
+//    }
 
 
     public function getCreatedAtAttribute($value)

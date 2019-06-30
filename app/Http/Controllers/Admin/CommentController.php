@@ -10,11 +10,14 @@ class CommentController extends Controller
 {
     public function list($id)
     {
+        $count=0;
+        $comments = Comment::with('user')->with('product');
 
-         $comments = Comment::where('product_id', $id)
-             ->with('user')
-             ->with('product')
-             ->get();
-        return view('admin.products.comments.list', compact('comments'));
+        if ($id) {
+            $comments->where('product_id', $id);
+        }
+
+        $comments = $comments->orderBy('id','DESC')->get();
+        return view('admin.products.comments.list', compact('comments','count'));
     }
 }

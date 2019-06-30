@@ -21,7 +21,7 @@
                 </thead>
 
                 <tbody>
-                <?php  $x=0;?>
+                <?php  $x = 0;?>
                 @foreach($orders as $datum)
                     <tr>
                         <td>{{++$x}}</td>
@@ -30,6 +30,8 @@
                             @foreach($datum->products as $product)
                                 <img src="{{url($product->image_path)}}" width="80px"/>
                                 <p>{{$product->code}}---{{$product->title}}</p>
+                                <p>قیمت واحد : {{$product->price}}</p>
+                                <p>تعداد درخواستی :{{$product->pivot->count}}</p>
                             @endforeach
 
                         </td>

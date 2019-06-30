@@ -74,8 +74,19 @@ class OrderController extends Controller
 
     public function final_buy(Request $request)
     {
+
         $user_id = getAppUserId($request);
-        $res = Order::where('user_id', $user_id)->where('status', 0)->update(['status' => 1]);
+        $total_price = 0;
+          $aa = Order::where('user_id', $user_id)->where('status', 0)->with(['products'=>function($q){
+           $q->select('price as price1');
+       }])->first();
+
+        foreach ($aa->products as $item) {
+            $total_price += $item->price1 * $item->pivot->count;
+        }
+
+
+        $res = Order::where('user_id', $user_id)->where('status', 0)->update(['status' => 1,'total_price'=>$total_price]);
 
         if ($res)
             return app_response(1, "final buy successfully");

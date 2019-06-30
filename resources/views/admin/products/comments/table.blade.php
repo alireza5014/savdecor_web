@@ -21,7 +21,7 @@
                 <tbody>
                 @foreach($comments as $datum)
                     <tr>
-                        <td>{{$datum->id}}</td>
+                        <td>{{++$count}}</td>
                         <td>
                             <img src="{{url($datum->product->image_path)}}" width="80px" /><br/>
                             {{$datum->product->code}}<br/>

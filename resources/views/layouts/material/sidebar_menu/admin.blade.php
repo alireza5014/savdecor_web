@@ -50,7 +50,7 @@
             </ul>
         </li>
 
-        <li class="navigation__active"><a href="{{url('')}}"><i class="zmdi zmdi-text-format"></i> پیام های کاربران</a>
+        <li class="navigation__active"><a href="{{route('comment.list',['id'=>0])}}"><i class="zmdi zmdi-text-format"></i> پیام های کاربران</a>
         </li>
 
 

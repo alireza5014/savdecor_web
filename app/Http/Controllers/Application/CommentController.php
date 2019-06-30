@@ -14,10 +14,10 @@ class CommentController extends Controller
         $data = [];
         try {
             $data = Comment::with(['user' => function ($q) {
-                return $q->select('id', 'fname', 'lname');
+                return $q->select('id', 'fname', 'lname','image_path');
             }])
                 ->where('product_id', $id)
-                ->where('is_published', 1)
+//                ->where('is_published', 1)
                 ->orderBy('id', 'DESC')
                 ->paginate(200);
         } catch (Exception $exception) {
@@ -41,10 +41,10 @@ class CommentController extends Controller
                 'reply_id' => $request->reply_id,
             ]);
         } catch (Exception $exception) {
-            return app_response(0, "NOOKAY");
+            return app_response(0, "خطا در ثبت نظر");
 
         }
-        return app_response(1, "OKAY");
+        return app_response(1, "نظر شما با موفقیت ثبت شد . بعد از تایید مدیر به نمایش گذاشته خواهد شد.");
 
     }
 
